@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IAN XAU Membership</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;background:#080808;color:#fff;min-height:100vh;display:grid;place-items:center}
+    .card{width:min(92%,460px);padding:34px;border:1px solid #333;border-radius:20px;background:#111;box-shadow:0 20px 60px #000}
+    h1{margin:0 0 8px;font-size:34px}
+    .gold{color:#d6a84f}
+    p{color:#aaa;line-height:1.5}
+    label{display:block;margin:18px 0 7px;font-size:14px;color:#ddd}
+    input{width:100%;padding:14px;border-radius:10px;border:1px solid #444;background:#181818;color:#fff;font-size:16px}
+    button{width:100%;margin-top:22px;padding:15px;border:0;border-radius:10px;background:#d6a84f;color:#000;font-weight:800;font-size:16px;cursor:pointer}
+    button:disabled{opacity:.6}
+    .price{font-size:28px;font-weight:800;margin:18px 0}
+    #message{margin-top:16px;font-size:14px}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>IAN <span class="gold">XAU</span></h1>
+    <p>Premium trading membership.</p>
+    <div class="price">KES 2,000 <small>/ month</small></div>
+
+    <form id="paymentForm">
+      <label for="email">Email</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" required placeholder="07XXXXXXXX">
+
+      <button id="payButton" type="submit">PAY & JOIN</button>
+    </form>
+
+    <div id="message"></div>
+  </main>
+
+<script>
+const form = document.getElementById("paymentForm");
+const button = document.getElementById("payButton");
+const message = document.getElementById("message");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  button.disabled = true;
+  message.textContent = "Opening secure payment...";
+
+  try {
+    const response = await fetch("/api/pay", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim()
+      })
+    });
+
+    const data = await response.json();
+    if (!response.ok || !data.authorization_url) {
+      throw new Error(data.error || "Payment could not be started.");
+    }
+
+    window.location.href = data.authorization_url;
+  } catch (err) {
+    message.textContent = err.message;
+    button.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
