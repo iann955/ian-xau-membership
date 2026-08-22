@@ -5,7 +5,12 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(express.static("."));
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
 
 const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
 const PORT = process.env.PORT || 3000;
