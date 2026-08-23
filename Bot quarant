@@ -1,0 +1,87 @@
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalText = document.getElementById("modal-text");
+
+const details = {
+  pdl: ["Previous Day Low", "PDL is the previous day's low. It can be used as a reference level during your market analysis."],
+  "asia-high": ["Asia High", "Asia High is the highest price formed during the selected Asia session and can act as a reference level."],
+  "asia-low": ["Asia Low", "Asia Low is the lowest price formed during the selected Asia session and can act as a reference level."],
+  levels: ["Market Levels", "The bot focuses on selected market reference levels so you can keep important areas organized while analyzing."]
+};
+
+document.querySelectorAll(".feature-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.modal;
+    modalTitle.textContent = details[key][0];
+    modalText.textContent = details[key][1];
+    modal.classList.add("show");
+  });
+});
+document.querySelector(".close-modal").onclick = () => modal.classList.remove("show");
+modal.addEventListener("click", e => { if(e.target === modal) modal.classList.remove("show"); });
+
+document.querySelectorAll(".faq-item").forEach(item => {
+  item.addEventListener("click", () => item.classList.toggle("open"));
+});
+
+const checkout = document.getElementById("checkout");
+const checkoutTitle = document.getElementById("checkout-title");
+const checkoutPrice = document.getElementById("checkout-price");
+const checkoutMessage = document.getElementById("checkout-message");
+
+document.querySelectorAll(".buy-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const product = btn.dataset.product === "vip" ? "IAN VIP Membership" : "IAN Forex Bot";
+    checkoutTitle.textContent = product;
+    checkoutPrice.textContent = "$" + btn.dataset.price;
+    checkout.dataset.product = btn.dataset.product;
+    checkout.dataset.price = btn.dataset.price;
+    checkoutMessage.textContent = "";
+    checkout.classList.add("show");
+  });
+});
+document.querySelector(".close-checkout").onclick = () => checkout.classList.remove("show");
+checkout.addEventListener("click", e => { if(e.target === checkout) checkout.classList.remove("show"); });
+
+document.getElementById("pay-button").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const product = checkout.dataset.product;
+  const amount = Number(checkout.dataset.price);
+
+  if(!email || !phone) {
+    checkoutMessage.textContent = "Enter your email and phone number first.";
+    return;
+  }
+
+  checkoutMessage.textContent = "Connecting to payment...";
+  try {
+    const response = await fetch("/api/pay", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({email, phone, product, amount})
+    });
+    const data = await response.json();
+    if(data.authorization_url) {
+      window.location.href = data.authorization_url;
+    } else {
+      checkoutMessage.textContent = data.error || "Payment could not be started.";
+    }
+  } catch(err) {
+    checkoutMessage.textContent = "Payment server is not connected yet.";
+  }
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.querySelector(".menu-btn").addEventListener("click", () => {
+  const nav = document.querySelector(".navbar nav");
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+  nav.style.position = "absolute";
+  nav.style.top = "76px";
+  nav.style.left = "0";
+  nav.style.right = "0";
+  nav.style.padding = "20px";
+  nav.style.background = "#050805";
+  nav.style.flexDirection = "column";
+});
