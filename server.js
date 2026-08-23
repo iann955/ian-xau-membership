@@ -1,79 +1,88 @@
-const express = require("express");
-const axios = require("axios");
-const crypto = require("crypto");
-require("dotenv").config();
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalText = document.getElementById("modal-text");
 
-const app = express();
-app.use(express.json());
-app.use(express.static("public"));
+const details = {
+  pdl: ["Previous Day Low", "PDL is the previous day's low. It can be used as a reference level during your market analysis."],
+  "asia-high": ["Asia High", "Asia High is the highest price formed during the selected Asia session and can act as a reference level."],
+  "asia-low": ["Asia Low", "Asia Low is the lowest price formed during the selected Asia session and can act as a reference level."],
+  levels: ["Market Levels", "The bot focuses on selected market reference levels so you can keep important areas organized while analyzing."]
+};
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+document.querySelectorAll(".feature-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.modal;
+    modalTitle.textContent = details[key][0];
+    modalText.textContent = details[key][1];
+    modal.classList.add("show");
+  });
+});
+document.querySelector(".close-modal").onclick = () => modal.classList.remove("show");
+modal.addEventListener("click", e => { if(e.target === modal) modal.classList.remove("show"); });
+
+document.querySelectorAll(".faq-item").forEach(item => {
+  item.addEventListener("click", () => item.classList.toggle("open"));
 });
 
+const checkout = document.getElementById("checkout");
+const checkoutTitle = document.getElementById("checkout-title");
+const checkoutPrice = document.getElementById("checkout-price");
+const checkoutMessage = document.getElementById("checkout-message");
 
-const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
-const PORT = process.env.PORT || 3000;
+document.querySelectorAll(".buy-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const product = btn.dataset.product === "vip" ? "IAN VIP Membership" : "IAN Forex Bot";
+    checkoutTitle.textContent = product;
+    checkoutPrice.textContent = "$" + btn.dataset.price;
+    checkout.dataset.product = btn.dataset.product;
+    checkout.dataset.price = btn.dataset.price;
+    checkoutMessage.textContent = "";
+    checkout.classList.add("show");
+  });
+});
+document.querySelector(".close-checkout").onclick = () => checkout.classList.remove("show");
+checkout.addEventListener("click", e => { if(e.target === checkout) checkout.classList.remove("show"); });
 
-if (!PAYSTACK_SECRET_KEY) {
-  console.warn("Missing PAYSTACK_SECRET_KEY. Add it to your .env file.");
-}
+document.getElementById("pay-button").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const product = checkout.dataset.product;
+  const amount = Number(checkout.dataset.price);
 
-app.post("/api/pay", async (req, res) => {
-  try {
-    const { email, phone } = req.body;
-    if (!email || !phone) return res.status(400).json({error:"Email and phone are required."});
-
-    const response = await axios.post(
-      "https://api.paystack.co/transaction/initialize",
-      {
-        email,
-        amount: 200000,
-        currency: "KES",
-        channels: ["mobile_money", "card"],
-        metadata: { product: "IAN XAU Membership", phone }
-      },
-      { headers: { Authorization: `Bearer ${PAYSTACK_SECRET_KEY}` } }
-    );
-
-    res.json({ authorization_url: response.data.data.authorization_url });
-  } catch (err) {
-    res.status(500).json({error: err.response?.data?.message || "Payment initialization failed."});
+  if(!email || !phone) {
+    checkoutMessage.textContent = "Enter your email and phone number first.";
+    return;
   }
-});
 
-// Verify payment before granting membership.
-app.get("/api/verify/:reference", async (req, res) => {
+  checkoutMessage.textContent = "Connecting to payment...";
   try {
-    const response = await axios.get(
-      `https://api.paystack.co/transaction/verify/${encodeURIComponent(req.params.reference)}`,
-      { headers: { Authorization: `Bearer ${PAYSTACK_SECRET_KEY}` } }
-    );
-    const tx = response.data.data;
-    res.json({
-      paid: tx.status === "success" && tx.amount === 200000 && tx.currency === "KES",
-      status: tx.status,
-      reference: tx.reference
+    const response = await fetch("/api/pay", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({email, phone, product, amount})
     });
-  } catch {
-    res.status(500).json({error:"Verification failed."});
+    const data = await response.json();
+    if(data.authorization_url) {
+      window.location.href = data.authorization_url;
+    } else {
+      checkoutMessage.textContent = data.error || "Payment could not be started.";
+    }
+  } catch(err) {
+    checkoutMessage.textContent = "Payment server is not connected yet.";
   }
 });
 
-// Paystack webhook signature verification.
-app.post("/api/paystack-webhook", express.raw({type:"application/json"}), (req, res) => {
-  const signature = req.headers["x-paystack-signature"];
-  const hash = crypto.createHmac("sha512", PAYSTACK_SECRET_KEY)
-    .update(req.body).digest("hex");
+document.getElementById("year").textContent = new Date().getFullYear();
 
-  if (signature !== hash) return res.sendStatus(401);
-
-  const event = JSON.parse(req.body.toString());
-  if (event.event === "charge.success") {
-    // TODO: Save membership in a real database.
-    console.log("Successful payment:", event.data.reference);
-  }
-  res.sendStatus(200);
+document.querySelector(".menu-btn").addEventListener("click", () => {
+  const nav = document.querySelector(".navbar nav");
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+  nav.style.position = "absolute";
+  nav.style.top = "76px";
+  nav.style.left = "0";
+  nav.style.right = "0";
+  nav.style.padding = "20px";
+  nav.style.background = "#050805";
+  nav.style.flexDirection = "column";
 });
-
-app.listen(PORT, () => console.log(`IAN XAU server running on port ${PORT}`));
+  
