@@ -68,7 +68,1207 @@ form.addEventListener("submit", async (e) => {
     message.textContent = err.message;
     button.disabled = false;
   }
-});
+});<!-- SECTION 2: IAN XAU AI PRO PLUS DASHBOARD PREVIEW -->
+<style>
+:root {
+  --bg: #050806;
+  --panel: #0b120d;
+  --line: #203c29;
+  --green: #39ff78;
+  --muted: #9aaba0;
+  --white: #f2f7f3;
+}
+
+#ian-section2 {
+  background: var(--bg);
+  color: var(--white);
+  padding: 24px;
+  border-radius: 16px;
+  font-family: Arial, sans-serif;
+}
+
+#ian-section2 * {
+  box-sizing: border-box;
+}
+
+#ian-section2 h1,
+#ian-section2 h2,
+#ian-section2 p {
+  margin-top: 0;
+}
+
+.ian-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.ian-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 17px;
+  min-width: 0;
+}
+
+.ian-muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.ian-value {
+  font-size: 25px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.ian-green {
+  color: var(--green);
+}
+
+.ian-btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+}
+
+.ian-btn-primary {
+  background: var(--green);
+  color: #061009;
+}
+
+.ian-btn-secondary {
+  background: #17251b;
+  color: white;
+  border: 1px solid #34513a;
+}
+
+.ian-status {
+  display: inline-block;
+  background: #18241b;
+  border: 1px solid #34513a;
+  padding: 6px 9px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.ian-two {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.ian-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ian-chart {
+  height: 220px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(#16301f 1px, transparent 1px),
+    linear-gradient(90deg, #16301f 1px, transparent 1px),
+    #071009;
+  background-size: 35px 35px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  text-align: center;
+  padding: 15px;
+}
+
+.ian-community {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.ian-prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ian-price {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.ian-modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  inset: 0;
+  background: rgba(0,0,0,.82);
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.ian-modal.open {
+  display: flex;
+}
+
+.ian-modal-box {
+  width: 100%;
+  max-width: 430px;
+  background: #0b130d;
+  border: 1px solid #34513a;
+  border-radius: 16px;
+  padding: 22px;
+  color: white;
+}
+
+.ian-modal-box input,
+.ian-modal-box select {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0 14px;
+  border: 1px solid #34513a;
+  border-radius: 8px;
+  background: #050806;
+  color: white;
+}
+
+.ian-modal-box label {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.ian-full {
+  width: 100%;
+}
+
+@media(max-width:750px) {
+  .ian-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ian-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width:420px) {
+  #ian-section2 {
+    padding: 13px;
+  }
+
+  .ian-prices {
+    grid-template-columns: 1fr;
+  }
+
+  .ian-value {
+    font-size: 21px;
+  }
+}
+</style>
+
+<section id="ian-section2">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div>
+      <div style="font-weight:800;letter-spacing:2px">
+        IAN XAU AI <span class="ian-green">PRO PLUS</span>
+      </div>
+      <small class="ian-muted">RULE-BASED XAUUSD TRADING SYSTEM</small>
+    </div>
+
+    <button class="ian-btn ian-btn-secondary"
+      type="button" onclick="ianOpenConnect()">
+      Connect Bot
+    </button>
+  </header>
+
+  <hr style="border-color:var(--line);margin:22px 0">
+
+  <p class="ian-green" style="font-size:11px;letter-spacing:2px">
+    TRADING WORKSPACE
+  </p>
+
+  <h1 style="font-size:clamp(27px,4vw,40px)">
+    Read the market.<br>
+    <span class="ian-green">Follow the rules.</span>
+  </h1>
+
+  <p class="ian-muted">
+    Monitor your account and XAUUSD strategy from one dashboard.
+    Sample values below are for preview only.
+  </p>
+
+  <!-- ACCOUNT OVERVIEW -->
+  <div class="ian-grid">
+
+    <div class="ian-card">
+      <div class="ian-muted">Sample Account Balance</div>
+      <div class="ian-value">$10,000.00</div>
+      <small class="ian-muted">Preview value only</small>
+    </div>
+
+    <div class="ian-card">
+      <div class="ian-muted">Equity</div>
+      <div class="ian-value">$10,000.00</div>
+      <small class="ian-muted">Not live MT5 data</small>
+    </div>
+
+    <div class="ian-card">
+      <div class="ian-muted">Today's P/L</div>
+      <div class="ian-value">$0.00</div>
+      <small class="ian-muted">Sample value</small>
+    </div>
+
+    <div class="ian-card">
+      <div class="ian-muted">Open Positions</div>
+      <div class="ian-value">0</div>
+      <small class="ian-muted">MT5 not connected</small>
+    </div>
+
+  </div>
+
+  <!-- COMMUNITY COUNTER -->
+  <div class="ian-card ian-community">
+    <div>
+      <div class="ian-green">COMMUNITY</div>
+      <div class="ian-value">6,000+ Traders Connected</div>
+      <div class="ian-muted">
+        Preview placeholder — verify the count before publishing it as fact.
+      </div>
+    </div>
+    <span class="ian-status">COMMUNITY PREVIEW</span>
+  </div>
+
+  <!-- CHART AND BOT STATUS -->
+  <div class="ian-two">
+
+    <div class="ian-card">
+      <div class="ian-row">
+        <h2 style="font-size:17px">XAUUSD Market Chart</h2>
+        <span class="ian-status">15 MIN</span>
+      </div>
+
+      <div class="ian-chart">
+        <div>
+          <strong style="color:white;font-size:22px">XAUUSD</strong>
+          <p>Gold / US Dollar</p>
+          <small>Chart preview — live feed not connected</small>
+        </div>
+      </div>
+
+      <button class="ian-btn ian-btn-secondary"
+        type="button" onclick="ianOpenDemo()">
+        Try Demo
+      </button>
+
+      <button class="ian-btn ian-btn-primary"
+        type="button" onclick="ianOpenConnect()">
+        Connect Bot
+      </button>
+    </div>
+
+    <div class="ian-card">
+      <h2 style="font-size:17px">Bot Monitor</h2>
+
+      <div class="ian-row">
+        <div>
+          <strong>MT5 Connection</strong><br>
+          <small class="ian-muted">Waiting for connection</small>
+        </div>
+        <span class="ian-status">OFFLINE</span>
+      </div>
+
+      <div class="ian-row">
+        <div>
+          <strong>Bot Execution</strong><br>
+          <small class="ian-muted">Commands not connected</small>
+        </div>
+        <span class="ian-status">DISABLED</span>
+      </div>
+
+      <div class="ian-row">
+        <div>
+          <strong>Strategy</strong><br>
+          <small class="ian-muted">Asia High/Low · PDH/PDL</small>
+        </div>
+        <span class="ian-status">RULE-BASED</span>
+      </div>
+
+      <button class="ian-btn ian-btn-primary ian-full"
+        type="button" onclick="ianOpenConnect()">
+        Connect Your MT5 Account
+      </button>
+    </div>
+
+  </div>
+
+  <!-- STRATEGY AND CALENDAR -->
+  <div class="ian-two">
+
+    <div class="ian-card">
+      <h2 style="font-size:17px">Strategy Overview</h2>
+
+      <div class="ian-row">
+        <span>Key levels</span>
+        <span class="ian-muted">Asia High/Low · PDH/PDL</span>
+      </div>
+
+      <div class="ian-row">
+        <span>Entry approach</span>
+        <span class="ian-muted">Sweep + confirmation</span>
+      </div>
+
+      <div class="ian-row">
+        <span>Risk controls</span>
+        <span class="ian-muted">SL / TP</span>
+      </div>
+    </div>
+
+    <div class="ian-card">
+      <h2 style="font-size:17px">Economic Calendar</h2>
+      <div class="ian-row">
+        <div>
+          <strong>Forex Factory</strong><br>
+          <small class="ian-muted">
+            Calendar embed to be connected
+          </small>
+        </div>
+        <span class="ian-status">USD EVENTS</span>
+      </div>
+
+      <p class="ian-muted">
+        Review high-impact USD news before trading gold.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- PRICING -->
+  <div style="margin-top:26px">
+    <h2>Choose Your Access</h2>
+
+    <div class="ian-prices">
+
+      <div class="ian-card">
+        <div class="ian-green">BOT ACCESS</div>
+        <div class="ian-price">$50</div>
+        <p class="ian-muted">IAN XAU AI Bot Access</p>
+
+        <button class="ian-btn ian-btn-primary ian-full"
+          type="button"
+          onclick="window.open('https://app.binance.com/uni-qr/request-to-pay?billOrderId=457060672361889792&billType=request_a_payment','_blank','noopener')">
+          Bot Access Payment
+        </button>
+      </div>
+
+      <div class="ian-card">
+        <div class="ian-green">VIP ACCESS</div>
+        <div class="ian-price">$120</div>
+        <p class="ian-muted">VIP Control Center Access</p>
+
+        <button class="ian-btn ian-btn-secondary ian-full"
+          type="button"
+          onclick="window.open('https://app.binance.com/uni-qr/request-to-pay?billOrderId=457061228438241280&billType=request_a_payment','_blank','noopener')">
+          VIP Payment
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="ian-muted" style="text-align:center;margin-top:25px">
+    IAN XAU AI PRO PLUS · SECTION 2 PREVIEW
+  </p>
+
+</section>
+
+<!-- TRY DEMO POPUP -->
+<div class="ian-modal" id="ian-demo-modal"
+  role="dialog" aria-modal="true" aria-labelledby="ian-demo-title">
+
+  <div class="ian-modal-box">
+    <button class="ian-btn ian-btn-secondary"
+      type="button" onclick="ianCloseModals()"
+      style="float:right">Close ✕</button>
+
+    <div style="clear:both"></div>
+
+    <h2 id="ian-demo-title">Demo Temporarily Unavailable</h2>
+
+    <p class="ian-muted">
+      Our trading demo is currently unavailable.
+      Please try again later.
+    </p>
+
+    <button class="ian-btn ian-btn-primary ian-full"
+      type="button" onclick="ianCloseModals()">
+      Try Again Later
+    </button>
+  </div>
+</div>
+
+<!-- MT5 CONNECTION POPUP -->
+<div class="ian-modal" id="ian-connect-modal"
+  role="dialog" aria-modal="true" aria-labelledby="ian-connect-title">
+
+  <div class="ian-modal-box">
+    <button class="ian-btn ian-btn-secondary"
+      type="button" onclick="ianCloseModals()"
+      style="float:right">Close ✕</button>
+
+    <div style="clear:both"></div>
+
+    <h2 id="ian-connect-title">Connect Your MT5 Account</h2>
+
+    <p class="ian-muted">
+      Enter the details needed to prepare your connection.
+      This form does not connect to MT5 yet.
+    </p>
+
+    <form onsubmit="ianPrepareConnection(event)">
+
+      <label>
+        Account Type
+        <select id="ian-mt5-type" required>
+          <option value="Demo">Demo</option>
+          <option value="Live">Live</option>
+        </select>
+      </label>
+
+      <label>
+        Broker Server
+        <input id="ian-mt5-server"
+          placeholder="e.g. Exness-MT5Trial" required>
+      </label>
+
+      <label>
+        MT5 Account Number
+        <input id="ian-mt5-account"
+          inputmode="numeric" placeholder="Account number" required>
+      </label>
+
+      <p class="ian-muted">
+        Never enter your MT5 trading password into this preview.
+        A real connection needs a secure service and must be verified.
+      </p>
+
+      <button class="ian-btn ian-btn-primary ian-full"
+        type="submit">
+        Prepare Connection
+      </button>
+
+      <p id="ian-connect-message" class="ian-muted"
+        aria-live="polite"></p>
+
+    </form>
+  </div>
+</div>
+
+<script>
+function ianOpenDemo() {
+  document.getElementById("ian-demo-modal").classList.add("open");
+}
+
+function ianOpenConnect() {
+  document.getElementById("ian-connect-modal").classList.add("open");
+}
+
+function ianCloseModals() {
+  document.getElementById("ian-demo-modal").classList.remove("open");
+  document.getElementById("ian-connect-modal").classList.remove("open");
+}
+
+function ianPrepareConnection(event) {
+  event.preventDefault();
+
+  document.getElementById("ian-connect-message").textContent =
+    "Preview only: details were not sent or saved. The secure MT5 connection service has not been configured.";
+}
+</script>
+<!-- END SECTION 2 --><!-- SECTION 3: IAN XAU AI FULL CONTROL CENTER -->
+
+<section id="ian-control-center">
+<style>
+#ian-control-center {
+  background:#030603;color:#e9f5eb;padding:24px 16px;
+  font-family:Arial,sans-serif
+}
+#ian-control-center *{box-sizing:border-box}
+#ian-control-center .wrap{max-width:1100px;margin:auto}
+#ian-control-center h2{color:#39ff78;font-size:27px}
+#ian-control-center h3{color:#39ff78;font-size:17px}
+#ian-control-center .muted{color:#9cae9f;font-size:12px;line-height:1.6}
+#ian-control-center .grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px
+}
+#ian-control-center .card{
+  background:#0a110c;border:1px solid #203d28;
+  border-radius:14px;padding:18px;min-width:0
+}
+#ian-control-center .wide{grid-column:1/-1}
+#ian-control-center .status{
+  padding:11px;background:#111a13;border:1px solid #29452f;
+  border-radius:8px;margin:10px 0;font-size:13px;overflow-wrap:anywhere
+}
+#ian-control-center .green{color:#39ff78}
+#ian-control-center .red{color:#ff8585}
+#ian-control-center .amber{color:#e7c66a}
+#ian-control-center label{
+  display:block;margin:12px 0 6px;font-size:13px;color:#c6d7c9
+}
+#ian-control-center input,#ian-control-center select{
+  width:100%;min-height:43px;padding:10px;background:#050906;
+  border:1px solid #35543b;border-radius:8px;color:white;font-size:14px
+}
+#ian-control-center .btn{
+  width:100%;min-height:44px;border:1px solid #39ff78;
+  border-radius:8px;background:#39ff78;color:#031006;
+  font-weight:bold;margin-top:12px;padding:11px;cursor:pointer
+}
+#ian-control-center .secondary{background:#101a12;color:#39ff78}
+#ian-control-center .stop{background:#251010;color:#ff8585;border-color:#703333}
+#ian-control-center .stats{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px
+}
+#ian-control-center .stat{
+  padding:12px;background:#060b07;border:1px solid #1c3322;border-radius:9px
+}
+#ian-control-center .stat span{display:block;font-size:12px;color:#9cae9f;margin-bottom:6px}
+#ian-control-center .stat strong{color:#39ff78;overflow-wrap:anywhere}
+#ian-control-center table{width:100%;border-collapse:collapse;font-size:13px}
+#ian-control-center th,#ian-control-center td{
+  text-align:left;padding:11px 7px;border-bottom:1px solid #203d28;
+  overflow-wrap:anywhere
+}
+#ian-control-center th{color:#39ff78}
+#ian-control-center .modal{
+  display:none;position:fixed;z-index:99999;inset:0;
+  background:rgba(0,0,0,.86);padding:18px;
+  align-items:center;justify-content:center
+}
+#ian-control-center .modal.open{display:flex}
+#ian-control-center .modal-box{
+  width:100%;max-width:420px;background:#09110b;
+  border:1px solid #39ff78;border-radius:15px;
+  padding:22px;max-height:90vh;overflow-y:auto
+}
+@media(max-width:650px){
+  #ian-control-center .grid{grid-template-columns:1fr}
+  #ian-control-center .wide{grid-column:auto}
+}
+</style>
+
+<div class="wrap">
+  <h2>⚡ IAN XAU AI</h2>
+  <h3>FULL CONTROL CENTER · VIP TICK SCALPER</h3>
+  <p class="muted">XAUUSD · Live account connection and bot controls</p>
+
+  <!-- SYSTEM STATUS -->
+  <div class="grid">
+    <div class="card">
+      <h3>📡 System Status</h3>
+      <div class="stat">
+        <span>MT5 Connection</span>
+        <strong id="cc-mt5-status" class="red">OFFLINE</strong>
+      </div>
+      <div class="status" id="cc-bot-status" role="status">
+        MT5 service not configured. Bot is not confirmed running.
+      </div>
+      <p class="muted">Connection status must be verified by the real MT5 service.</p>
+    </div>
+
+    <!-- MEMBERSHIP -->
+    <div class="card">
+      <h3>🔐 Membership Access</h3>
+      <label for="cc-plan">Choose your plan</label>
+      <select id="cc-plan">
+        <option value="bot">Bot Access — $50</option>
+        <option value="vip">VIP — $120</option>
+      </select>
+      <div class="status" id="cc-access-status">
+        Payment: NOT VERIFIED
+      </div>
+      <button type="button" class="btn secondary" id="cc-check-access">
+        Check My Access
+      </button>
+      <p class="muted">Selecting a plan does not prove payment.</p>
+    </div>
+
+    <!-- BOTH PLANS -->
+    <div class="card wide">
+      <h3>💳 Available Plans</h3>
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>$50 Bot Access</th><th>$120 VIP</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bot activation</td><td>Included</td><td>Included</td></tr>
+          <tr><td>MT5 login/server</td><td>Included</td><td>Included</td></tr>
+          <tr><td>Run / Stop controls</td><td>Included</td><td>Included</td></tr>
+          <tr><td>VIP features</td><td>Not included</td><td>Included</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Access is granted only after the payment backend verifies the purchase.</p>
+    </div>
+
+    <!-- MT5 DETAILS -->
+    <div class="card wide">
+      <h3>🔌 MT5 Live Account Details</h3>
+      <p class="muted">Live account only. Demo mode has been removed.</p>
+
+      <label for="cc-account-type">Account Type</label>
+      <input id="cc-account-type" type="text" value="Live Account" readonly>
+
+      <label for="cc-login">MT5 Login / Account Number</label>
+      <input id="cc-login" type="text" inputmode="numeric"
+        autocomplete="off" placeholder="Enter your MT5 account number">
+
+      <label for="cc-broker">Broker Server</label>
+      <input id="cc-broker" type="text" autocomplete="off"
+        placeholder="Enter the exact MT5 server name">
+
+      <table>
+        <thead><tr><th>Account field</th><th>Current value</th></tr></thead>
+        <tbody>
+          <tr><td>MT5 Login</td><td id="cc-table-login">Not entered</td></tr>
+          <tr><td>Broker Server</td><td id="cc-table-server">Not entered</td></tr>
+          <tr><td>Account Type</td><td>Live</td></tr>
+          <tr><td>Connection Status</td><td id="cc-table-status" class="red">Not connected</td></tr>
+        </tbody>
+      </table>
+
+      <button type="button" class="btn" id="cc-connect">🔗 Connect Bot</button>
+      <div class="status" id="cc-connect-message" role="status" aria-live="polite">
+        Not connected. A real MT5 service is required to verify these details.
+      </div>
+
+      <p class="muted">
+        Never enter your MT5 trading password into this ordinary website form.
+        This form does not authenticate an account by itself.
+      </p>
+    </div>
+
+    <!-- STRATEGY -->
+    <div class="card">
+      <h3>📈 Tick Scalper Strategy</h3>
+      <div class="status">
+        Symbol: XAUUSD<br>
+        Signal timeframe: M1<br>
+        Mode: Live account selected
+      </div>
+      <p class="muted">
+        Selecting Live does not start trading. Verified strategy signals
+        require the connected EA and MT5 service.
+      </p>
+    </div>
+
+    <!-- RISK -->
+    <div class="card">
+      <h3>🛡️ Risk Controls</h3>
+      <div class="stats">
+        <div class="stat"><span>Risk per trade</span><strong>1%</strong></div>
+        <div class="stat"><span>Maximum spread</span><strong>100 points</strong></div>
+        <div class="stat"><span>Stop loss</span><strong>500 points</strong></div>
+        <div class="stat"><span>Take profit</span><strong>750 points</strong></div>
+        <div class="stat"><span>Daily loss limit</span><strong>3%</strong></div>
+        <div class="stat"><span>Profit target</span><strong>$0.50</strong></div>
+      </div>
+      <p class="muted">
+        These are displayed settings from the proposed EA configuration.
+        They are not proof that risk protections are active in MT5.
+      </p>
+    </div>
+
+    <!-- ACTIVATION -->
+    <div class="card wide">
+      <h3>⚙️ Bot Activation</h3>
+      <div class="status" id="cc-activation-status">
+        🔒 Locked — payment and MT5 connection have not been verified.
+      </div>
+      <button type="button" class="btn secondary" id="cc-activate">
+        Activate Bot
+      </button>
+      <button type="button" class="btn" id="cc-run">▶ RUN BOT</button>
+      <button type="button" class="btn stop" id="cc-stop">■ STOP BOT</button>
+      <div class="status" id="cc-command-message" role="status" aria-live="polite">
+        Offline. Run and Stop require a real MT5 command service.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PURCHASE POPUP -->
+<div class="modal" id="cc-purchase-modal" role="dialog"
+  aria-modal="true" aria-labelledby="cc-purchase-title">
+  <div class="modal-box">
+    <h3 id="cc-purchase-title">🔒 Bot Access Required</h3>
+    <p>Purchase a plan before requesting bot activation.</p>
+
+    <h3>$50 — Bot Access</h3>
+    <button type="button" class="btn" id="cc-buy-50">Purchase Bot Access</button>
+
+    <h3>$120 — VIP</h3>
+    <button type="button" class="btn secondary" id="cc-buy-120">Purchase VIP</button>
+
+    <button type="button" class="btn secondary" id="cc-close-purchase">Close</button>
+    <p class="muted">Payment must be verified before access is granted.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const root = document.getElementById("ian-control-center");
+  if (!root || root.dataset.initialized === "yes") return;
+  root.dataset.initialized = "yes";
+
+  const $ = id => document.getElementById(id);
+
+  const paymentLinks = {
+    bot: "https://app.binance.com/uni-qr/request-to-pay?billOrderId=457060672361889792&billType=request_a_payment",
+    vip: "https://app.binance.com/uni-qr/request-to-pay?billOrderId=457061228438241280&billType=request_a_payment"
+  };
+
+  // Secure defaults: never assume payment or MT5 connection.
+  let accessVerified = false;
+  let mt5Verified = false;
+
+  function message(id, text) {
+    $(id).textContent = text;
+  }
+
+  function openPurchase() {
+    $("cc-purchase-modal").classList.add("open");
+  }
+
+  function closePurchase() {
+    $("cc-purchase-modal").classList.remove("open");
+  }
+
+  $("cc-close-purchase").addEventListener("click", closePurchase);
+
+  $("cc-buy-50").addEventListener("click", function () {
+    window.open(paymentLinks.bot, "_blank", "noopener,noreferrer");
+  });
+
+  $("cc-buy-120").addEventListener("click", function () {
+    window.open(paymentLinks.vip, "_blank", "noopener,noreferrer");
+  });
+
+  $("cc-plan").addEventListener("change", function () {
+    accessVerified = false;
+    message("cc-access-status", "Payment: NOT VERIFIED");
+    message("cc-activation-status", "🔒 Locked — verify payment for the selected plan.");
+  });
+
+  $("cc-login").addEventListener("input", function () {
+    $("cc-table-login").textContent = this.value.trim() || "Not entered";
+    mt5Verified = false;
+  });
+
+  $("cc-broker").addEventListener("input", function () {
+    $("cc-table-server").textContent = this.value.trim() || "Not entered";
+    mt5Verified = false;
+  });
+
+  $("cc-check-access").addEventListener("click", function () {
+    accessVerified = false;
+    message("cc-access-status",
+      "Payment: NOT VERIFIED — secure payment verification is not configured.");
+  });
+
+  $("cc-connect").addEventListener("click", function () {
+    const login = $("cc-login").value.trim();
+    const broker = $("cc-broker").value.trim();
+
+    mt5Verified = false;
+    $("cc-mt5-status").textContent = "OFFLINE";
+    $("cc-table-status").textContent = "Not connected";
+    $("cc-table-status").className = "red";
+
+    if (!login || !broker) {
+      message("cc-connect-message",
+        "Enter both the MT5 login number and broker server.");
+      return;
+    }
+
+    if (!/^[0-9]+$/.test(login)) {
+      message("cc-connect-message",
+        "Invalid format: MT5 login must contain digits only.");
+      return;
+    }
+
+    message("cc-connect-message",
+      "Details entered, but account NOT VERIFIED. The MT5 backend must authenticate the account.");
+    message("cc-bot-status",
+      "OFFLINE — account details have not been verified by MT5.");
+  });
+
+  $("cc-activate").addEventListener("click", function () {
+    if (!accessVerified) {
+      openPurchase();
+      message("cc-activation-status",
+        "🔒 Locked — payment is not verified.");
+      return;
+    }
+
+    if (!mt5Verified) {
+      message("cc-activation-status",
+        "🔒 Locked — MT5 connection is not verified.");
+      return;
+    }
+
+    message("cc-activation-status",
+      "Activation service is not configured. No activation has occurred.");
+  });
+
+  $("cc-run").addEventListener("click", function () {
+    if (!accessVerified) {
+      openPurchase();
+      message("cc-command-message",
+        "Purchase a plan and verify payment before running the bot.");
+      return;
+    }
+
+    if (!mt5Verified) {
+      message("cc-command-message",
+        "Cannot run: a verified MT5 connection is required.");
+      return;
+    }
+
+    message("cc-command-message",
+      "Run unavailable: real MT5 command service is not configured.");
+  });
+
+  $("cc-stop").addEventListener("click", function () {
+    message("cc-command-message",
+      "Stop command not sent: MT5 command service is not configured.");
+  });
+
+  $("cc-mt5-status").textContent = "OFFLINE";
+})();
+</script>
+</section>
+
+<!-- END SECTION 3 --><!-- SECTION 4: IAN XAU AI AUTHENTICATION -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+(() => {
+  "use strict";
+
+  // YOUR EXISTING SUPABASE CONFIGURATION
+  const SUPABASE_URL =
+    "https://elnqijtvqstzaxrydyox.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_krU-ZfHaxTgJC46LWL_1Tw_3iiV6FW4";
+
+  if (!window.supabase) {
+    console.error("Supabase library failed to load.");
+    return;
+  }
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  window.ianSupabase = db;
+
+  const $ = (id) => document.getElementById(id);
+
+  function showMessage(message, isError = false) {
+    let box = $("ianAuthMessage");
+
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "ianAuthMessage";
+      box.setAttribute("role", "status");
+      box.style.cssText =
+        "margin:12px 0;padding:12px;border-radius:8px;" +
+        "font-size:14px;line-height:1.5;" +
+        "background:#101810;color:#39ff78;" +
+        "border:1px solid #244b2c;";
+
+      const form = $("authForm");
+      if (form && form.parentNode) {
+        form.parentNode.insertBefore(box, form);
+      } else {
+        document.body.prepend(box);
+      }
+    }
+
+    box.style.color = isError ? "#ff7777" : "#39ff78";
+    box.textContent = message;
+  }
+
+  function getEmail() {
+    return ($("email")?.value || "").trim();
+  }
+
+  function getPassword() {
+    return $("password")?.value || "";
+  }
+
+  function getFullName() {
+    return ($("fullName")?.value || "").trim();
+  }
+
+  function setBusy(busy) {
+    const form = $("authForm");
+    const buttons = form
+      ? form.querySelectorAll('button[type="submit"], input[type="submit"]')
+      : [];
+
+    buttons.forEach((button) => {
+      button.disabled = busy;
+    });
+  }
+
+  async function login() {
+    const email = getEmail();
+    const password = getPassword();
+
+    if (!email || !password) {
+      showMessage("Enter your email and password.", true);
+      return;
+    }
+
+    setBusy(true);
+
+    try {
+      const { data, error } = await db.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) throw error;
+
+      showMessage("Login successful. Your session is active.");
+
+      // Notify other website sections.
+      window.dispatchEvent(
+        new CustomEvent("ian:auth-changed", {
+          detail: { user: data.user }
+        })
+      );
+
+    } catch (error) {
+      showMessage(error.message || "Login failed.", true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function signup() {
+    const email = getEmail();
+    const password = getPassword();
+    const fullName = getFullName();
+
+    if (!fullName) {
+      showMessage("Enter your full name.", true);
+      return;
+    }
+
+    if (!email || !password) {
+      showMessage("Enter your email and password.", true);
+      return;
+    }
+
+    if (password.length < 8) {
+      showMessage("Your password must contain at least 8 characters.", true);
+      return;
+    }
+
+    setBusy(true);
+
+    try {
+      const { data, error } = await db.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName
+          }
+        }
+      });
+
+      if (error) throw error;
+
+      if (data.session) {
+        showMessage("Account created successfully. You are signed in.");
+      } else {
+        showMessage(
+          "Account created. Check your email for the verification link."
+        );
+      }
+
+      window.dispatchEvent(
+        new CustomEvent("ian:auth-changed", {
+          detail: { user: data.user || null }
+        })
+      );
+
+    } catch (error) {
+      showMessage(error.message || "Account creation failed.", true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function logout() {
+    try {
+      const { error } = await db.auth.signOut();
+      if (error) throw error;
+
+      showMessage("You have signed out.");
+
+      window.dispatchEvent(
+        new CustomEvent("ian:auth-changed", {
+          detail: { user: null }
+        })
+      );
+
+    } catch (error) {
+      showMessage(error.message || "Sign-out failed.", true);
+    }
+  }
+
+  async function sendPasswordReset() {
+    const email = getEmail();
+
+    if (!email) {
+      showMessage("Enter your email address first.", true);
+      return;
+    }
+
+    try {
+      const { error } = await db.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin
+      });
+
+      if (error) throw error;
+
+      showMessage("If the account exists, a password-reset email will be sent.");
+
+    } catch (error) {
+      showMessage(error.message || "Could not request a password reset.", true);
+    }
+  }
+
+  // Existing Section 1 login/signup tabs.
+  window.showAuthMode = function(mode) {
+    const isSignup = mode === "signup";
+
+    const nameField = $("fullName");
+    if (nameField) {
+      nameField.style.display = isSignup ? "" : "none";
+      nameField.required = isSignup;
+    }
+
+    const loginTab = $("loginTab");
+    const signupTab = $("signupTab");
+
+    if (loginTab) loginTab.classList.toggle("active", !isSignup);
+    if (signupTab) signupTab.classList.toggle("active", isSignup);
+
+    const submitButton = $("authForm")?.querySelector(
+      'button[type="submit"], input[type="submit"]'
+    );
+
+    if (submitButton && submitButton.tagName === "BUTTON") {
+      submitButton.textContent = isSignup
+        ? "Create Account"
+        : "Login";
+    }
+
+    const message = $("ianAuthMessage");
+    if (message) message.textContent = "";
+  };
+
+  // Connect to the existing authentication form.
+  function attachAuthForm() {
+    const form = $("authForm");
+
+    if (!form || form.dataset.ianAuthAttached === "true") return;
+
+    form.dataset.ianAuthAttached = "true";
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const signupTab = $("signupTab");
+      const isSignup = signupTab?.classList.contains("active");
+
+      if (isSignup) {
+        await signup();
+      } else {
+        await login();
+      }
+    });
+
+    // Prevent Enter from accidentally submitting a hidden signup name.
+    const nameField = $("fullName");
+    if (nameField && !$("signupTab")?.classList.contains("active")) {
+      nameField.required = false;
+    }
+  }
+
+  // Available for existing buttons elsewhere on your website.
+  window.ianLogout = logout;
+  window.ianPasswordReset = sendPasswordReset;
+
+  // Restore the current session and notify the dashboard.
+  async function initialiseAuth() {
+    attachAuthForm();
+
+    const { data, error } = await db.auth.getSession();
+
+    if (error) {
+      console.error("Could not restore session:", error.message);
+    }
+
+    window.dispatchEvent(
+      new CustomEvent("ian:auth-changed", {
+        detail: { user: data?.session?.user || null }
+      })
+    );
+
+    db.auth.onAuthStateChange((event, session) => {
+      window.dispatchEvent(
+        new CustomEvent("ian:auth-changed", {
+          detail: {
+            event,
+            user: session?.user || null
+          }
+        })
+      );
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialiseAuth);
+  } else {
+    initialiseAuth();
+  }
+})();
+</script>
+<!-- END SECTION 4 -->
 </script>
 </body>
 </html>
